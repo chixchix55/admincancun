@@ -1,0 +1,2 @@
+[10-Apr-2023 18:02:32 America/Mexico_City] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'c1532136_cancun'@'localhost' (using password: YES) in /home1/shuttlet/public_html/cancuncabtransportation.com/login.cancuncabtransportation.com/login.php on line 24
+[10-Apr-2023 18:15:43 America/Mexico_City] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'c1532136_cancun'@'localhost' (using password: YES) in /home1/shuttlet/public_html/cancuncabtransportation.com/login.cancuncabtransportation.com/login.php on line 24
