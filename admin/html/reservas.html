@@ -401,29 +401,6 @@
                       Cancelar
                     </button>
                     <button id="guardar-cambios" type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar Cambios</button>
-                    <script>
-                      const guardarCambiosBtn = document.getElementById('guardar-cambios');
-                      guardarCambiosBtn.addEventListener('click', () => {
-                        // Create the alert element
-                        const alertEl = document.createElement('div');
-                        alertEl.className = 'alert alert-success alert-dismissible position-fixed top-0 end-0 mt-3 me-3';
-                        alertEl.setAttribute('style', 'z-index: 9999;')
-                        alertEl.setAttribute('role', 'alert');
-                        alertEl.textContent = 'Los cambios se han guardado exitosamente';
-                        // Add the close button
-                        const closeButton = document.createElement('button');
-                        closeButton.className = 'btn-close';
-                        closeButton.setAttribute('type', 'button');
-                        closeButton.setAttribute('data-bs-dismiss', 'alert');
-                        closeButton.setAttribute('aria-label', 'Close');
-                        alertEl.appendChild(closeButton);
-                        setTimeout(() => {
-                          alertEl.remove();
-                        }, 2000);
-                        // Add the alert to the body
-                        document.body.appendChild(alertEl);
-                      });
-                    </script>
                   </div>
                 </div>
               </div>
@@ -451,7 +428,7 @@
             <div class="card m-5">
               <h5 class="card-header">Reservas</h5>
               <div class="table-responsive text-nowrap">
-                <table class="table">
+                <table id="tabla-reservas" class="table">
                   <thead>
                     <tr>
                       <th>Numero Reserva</th>
@@ -467,7 +444,7 @@
                       <th>Acciones</th>
                     </tr>
                   </thead>
-                  <tbody class="table-border-bottom-0">
+                  <tbody id='tabla-contenido' class="table-border-bottom-0">
                     <tr>
                       <td>1</td>
                       <td>John Doe</td>
@@ -479,60 +456,6 @@
                       <td>2021-05-05</td>
                       <td>$100</td>
                       <td><span class="badge bg-label-primary me-1">Activa</span></td>
-                      <td>
-                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#largeModal">
-                        Editar
-                        </button>
-                        <button type="button" class="btn btn-danger btn-sm eliminar-reserva" data-bs-toggle="modal" data-bs-target="#modalCenter">Eliminar</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>John Doe</td>
-                      <td>San Salvador</td>
-                      <td>Guatemala</td>
-                      <td>Ida y Vuelta</td>
-                      <td>Paquete 1</td>
-                      <td>2021-05-01</td>
-                      <td>2021-05-05</td>
-                      <td>$100</td>
-                      <td><span class="badge bg-label-success me-1">Terminada</span></td>
-                      <td>
-                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#largeModal">
-                        Editar
-                        </button>
-                        <button type="button" class="btn btn-danger btn-sm eliminar-reserva" data-bs-toggle="modal" data-bs-target="#modalCenter">Eliminar</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>John Doe</td>
-                      <td>San Salvador</td>
-                      <td>Guatemala</td>
-                      <td>Ida y Vuelta</td>
-                      <td>Paquete 1</td>
-                      <td>2021-05-01</td>
-                      <td>2021-05-05</td>
-                      <td>$100</td>
-                      <td><span class="badge bg-label-danger me-1">Cancelada</span></td>
-                      <td>
-                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#largeModal">
-                        Editar
-                        </button>
-                        <button type="button" class="btn btn-danger btn-sm eliminar-reserva" data-bs-toggle="modal" data-bs-target="#modalCenter">Eliminar</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>John Doe</td>
-                      <td>San Salvador</td>
-                      <td>Guatemala</td>
-                      <td>Ida y Vuelta</td>
-                      <td>Paquete 1</td>
-                      <td>2021-05-01</td>
-                      <td>2021-05-05</td>
-                      <td>$100</td>
-                      <td><span class="badge bg-label-warning me-1">Pendiente</span></td>
                       <td>
                         <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#largeModal">
                         Editar
@@ -577,6 +500,9 @@
 
     <!-- Page JS -->
     <script src="../assets/js/dashboards-analytics.js"></script>
+
+    <!-- Helper for php -->
+    <script src="../js/index.js"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
