@@ -311,12 +311,124 @@
 
           <!-- Content wrapper -->
           <div class="content-wrapper">
-            
+            <!-- Modals -->
+            <div class="modal fade" id="largeModal" tabindex="-1" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel3">Modificar Reserva</h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="row">
+                        <div class="col mb-3">
+                          <label for="numReserva" class="form-label">Numero Reserva</label>
+                          <input type="text" id="numReserva" class="form-control" readonly placeholder="1" />
+                        </div>
+                        <div class="col mb-3">
+                          <label for="cliente" class="form-label">Cliente</label>
+                          <select id="cliente" class="form-select">
+                            <option selected>John Doe</option>
+                            <!-- Add other options as needed -->
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row g-2">
+                        <div class="col mb-0">
+                          <label for="salida" class="form-label">Salida</label>
+                          <select id="salida" class="form-select">
+                            <option selected>San Salvador</option>
+                            <!-- Add other options as needed -->
+                          </select>
+                        </div>
+                        <div class="col mb-0">
+                          <label for="destino" class="form-label">Destino</label>
+                          <select id="destino" class="form-select">
+                            <option selected>Guatemala</option>
+                            <!-- Add other options as needed -->
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row g-2">
+                        <div class="col mb-0">
+                          <label for="tipo" class="form-label">Tipo de Viaje</label>
+                          <select id="tipo" class="form-select">
+                            <option selected>Ida y Vuelta</option>
+                            <!-- Add other options as needed -->
+                          </select>
+                        </div>
+                        <div class="col mb-0">
+                          <label for="paquete" class="form-label">Paquete</label>
+                          <select id="paquete" class="form-select">
+                            <option selected>Paquete 1</option>
+                            <!-- Add other options as needed -->
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row g-2">
+                        <div class="col mb-0">
+                          <label for="fechaIda" class="form-label">Fecha Ida</label>
+                          <input type="date" id="fechaIda" class="form-control" placeholder="2021-05-05" />
+                        </div>
+                        <div class="col mb-0">
+                          <label for="fechaRegreso" class="form-label">Fecha Regreso</label>
+                          <input type="date" id="fechaRegreso" class="form-control" placeholder="2021-05-05" />
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col mb-0">
+                          <label for="precio" class="form-label">Precio</label>
+                          <input type="text" id="precio" class="form-control" readonly placeholder="$100" />
+                        </div>
+                        <div class="col mb-0">
+                          <label for="estado" class="form-label">Estado</label>
+                          <select id="estado" class="form-select">
+                            <option selected>Placeholder</option>
+                            <!-- Add other options as needed -->
+                          </select>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                      Cancelar
+                    </button>
+                    <button id="guardar-cambios" type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar Cambios</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal fade" id="modalCenter" tabindex="-1" style="display: none;" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modalCenterTitle">Estas seguro?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Esta seguro que desea eliminar este registro?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                      Cancelar
+                    </button>
+                    <button type="button" class="btn btn-danger btn-m" data-bs-dismiss="modal">Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
             <!-- Content -->
             <div class="card m-5">
-              <h5 class="card-header">Table Basic</h5>
+              <h5 class="card-header">Reservas</h5>
               <div class="table-responsive text-nowrap">
-                <table class="table">
+                <table id="tabla-reservas" class="table">
                   <thead>
                     <tr>
                       <th>Numero Reserva</th>
@@ -332,7 +444,7 @@
                       <th>Acciones</th>
                     </tr>
                   </thead>
-                  <tbody class="table-border-bottom-0">
+                  <tbody id='tabla-contenido' class="table-border-bottom-0">
                     <tr>
                       <td>1</td>
                       <td>John Doe</td>
@@ -345,56 +457,10 @@
                       <td>$100</td>
                       <td><span class="badge bg-label-primary me-1">Activa</span></td>
                       <td>
-                        <a href="#" class="btn btn-primary btn-sm">Editar</a>
-                        <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>John Doe</td>
-                      <td>San Salvador</td>
-                      <td>Guatemala</td>
-                      <td>Ida y Vuelta</td>
-                      <td>Paquete 1</td>
-                      <td>2021-05-01</td>
-                      <td>2021-05-05</td>
-                      <td>$100</td>
-                      <td><span class="badge bg-label-success me-1">Terminada</span></td>
-                      <td>
-                        <a href="#" class="btn btn-primary btn-sm">Editar</a>
-                        <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>John Doe</td>
-                      <td>San Salvador</td>
-                      <td>Guatemala</td>
-                      <td>Ida y Vuelta</td>
-                      <td>Paquete 1</td>
-                      <td>2021-05-01</td>
-                      <td>2021-05-05</td>
-                      <td>$100</td>
-                      <td><span class="badge bg-label-danger me-1">Cancelada</span></td>
-                      <td>
-                        <a href="#" class="btn btn-primary btn-sm">Editar</a>
-                        <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>John Doe</td>
-                      <td>San Salvador</td>
-                      <td>Guatemala</td>
-                      <td>Ida y Vuelta</td>
-                      <td>Paquete 1</td>
-                      <td>2021-05-01</td>
-                      <td>2021-05-05</td>
-                      <td>$100</td>
-                      <td><span class="badge bg-label-warning me-1">Pendiente</span></td>
-                      <td>
-                        <a href="#" class="btn btn-primary btn-sm">Editar</a>
-                        <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#largeModal">
+                        Editar
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm eliminar-reserva" data-bs-toggle="modal" data-bs-target="#modalCenter">Eliminar</button>
                       </td>
                     </tr>
                   </tbody>
@@ -434,6 +500,9 @@
 
     <!-- Page JS -->
     <script src="../assets/js/dashboards-analytics.js"></script>
+
+    <!-- Helper for php -->
+    <script src="../js/index.js"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
