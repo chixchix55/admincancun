@@ -42,8 +42,6 @@
 
     <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
 
-    <link rel="stylesheet" href="../assets/css/style.css"/>
-
     <!-- Page CSS -->
 
     <!-- Helpers -->
@@ -65,7 +63,7 @@
             <a href="../admin.html">
               <img style="
               width: 220px;" src="../assets/img/cancun-cab-transportation-logo.png"/>
-            </a>
+            </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
               <i class="bx bx-chevron-left bx-sm align-middle"></i>
@@ -92,7 +90,7 @@
             </li>
 
             <!-- Calendario -->
-            <li class="menu-item active">
+            <li class="menu-item">
               <a href="calendario.html" class="menu-link">
                 <i class='menu-icon tf-icons bx bx-calendar'></i>
                 <div data-i18n="Analytics">Calendario</div>
@@ -124,7 +122,7 @@
             </li>
 
             <!-- Paquetes -->
-            <li class="menu-item">
+            <li class="menu-item active">
               <a href="paquetes.html" class="menu-link">
                 <i class='menu-icon tf-icons bx bx-car'></i>
                 <div data-i18n="Analytics">Paquetes</div>
@@ -260,11 +258,55 @@
           <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Modals -->
-            <div class="modal fade" id="largeModal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
+            <div class="modal fade" id="editarPaquetesModal" tabindex="-1" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel3">Modificar Paquete</h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="row">
+                        <div class="col mb-3">
+                          <label for="cliente" class="form-label">Nombre</label>
+                          <input type="text" id="cliente" class="form-control" placeholder="San Salvador" />
+                        </div>
+                        <div class="col mb-3">
+                            <label for="paquete" class="form-label">Cantidad minima de personas</label>
+                            <input type="text" id="paquete" class="form-control" placeholder="0"/>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col mb-3">
+                          <label for="cliente" class="form-label">Cantidad maxima de personas</label>
+                          <input type="text" id="cliente" class="form-control" placeholder="0" />
+                        </div>
+                        <div class="col mb-3">
+                        </div>
+                      </div>
+                      
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                      Cancelar
+                    </button>
+                    <button id="guardar-cambios" type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar Cambios</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal fade" id="crearPaqueteModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-sm" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel3">Reservas</h5>
+                      <h5 class="modal-title" id="exampleModalLabel3">Registrar Paquete</h5>
                       <button
                         type="button"
                         class="btn-close"
@@ -273,229 +315,88 @@
                       ></button>
                     </div>
                     <div class="modal-body">
-                        <!-- <h1>Hola papi bello eres muy bueno la puta madre</h1> -->
+                      <form>
+                        <div class="row">
+                          <div class="col mb-3">
+                            <label for="cliente" class="form-label">Nombre</label>
+                            <input type="text" id="cliente" class="form-control" placeholder="Paquete 1" />
+                          </div>
+                          <div class="col mb-3">
+                              <label for="paquete" class="form-label">Cantidad minima</label>
+                              <input type="text" id="paquete" class="form-control" placeholder="0"/>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col mb-3">
+                            <label for="cliente" class="form-label">Cantidad maxima</label>
+                            <input type="text" id="cliente" class="form-control" placeholder="0" />
+                          </div>
+                          <div class="col mb-3"></div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Cancelar
+                      </button>
+                      <button id="guardar-cambios" type="button" class="btn btn-primary" data-bs-dismiss="modal">Registrar</button>
                     </div>
                   </div>
                 </div>
-            </div>
-            <div class="my-wrapper">
-                <div class="calendar">
-                    <div class="calendar-header">
-                        <span class="month-picker" id="month-picker">April</span>
-                        <div class="year-picker">
-                            <span class="year-change" id="prev-year">
-                                <pre><</pre>
-                            </span>
-                            <span id="year">2022</span>
-                            <span class="year-change" id="next-year">
-                                <pre>></pre>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="calendar-body">
-                        <div class="calendar-week-day">
-                            <div>Dom</div>
-                            <div>Lun</div>
-                            <div>Mar</div>
-                            <div>Mie</div>
-                            <div>Jue</div>
-                            <div>Vie</div>
-                            <div>Sab</div>
-                        </div>
-                        <div class="calendar-days"></div>
-                    </div>
-                   
-                    <div class="month-list"></div>
+              </div>
+            <div class="modal fade" id="eliminarPaquetesModal" tabindex="-1" style="display: none;" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modalCenterTitle">Estas seguro?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Esta seguro que desea eliminar este registro?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                      Cancelar
+                    </button>
+                    <button type="button" class="btn btn-danger btn-m" data-bs-dismiss="modal">Eliminar</button>
+                  </div>
                 </div>
-                <script>
-                    let calendar = document.querySelector('.calendar')
-
-                    if (calendar != null){
-                    const month_names = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
-
-                    isLeapYear = (year) => {
-                        return (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) || (year % 100 === 0 && year % 400 ===0)
-                    }
-
-                    getFebDays = (year) => {
-                        return isLeapYear(year) ? 29 : 28
-                    }
-
-                    generateCalendar = (month, year) => {
-
-                        let calendar_days = calendar.querySelector('.calendar-days')
-                        let calendar_header_year = calendar.querySelector('#year')
-
-                        let days_of_month = [31, getFebDays(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-
-                        calendar_days.innerHTML = ''
-
-                        let currDate = new Date()
-                        if (month > 11 || month < 0) month = currDate.getMonth()
-                        if (!year) year = currDate.getFullYear()
-
-                        let curr_month = `${month_names[month]}`
-                        month_picker.innerHTML = curr_month
-                        calendar_header_year.innerHTML = year
-
-                        // get first day of month
-                        
-                        let first_day = new Date(year, month, 1)
-
-                        for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 1; i++) {
-                            let day = document.createElement('div')
-                            if (i >= first_day.getDay()) {
-                                day.classList.add('calendar-day-hover')
-                                day.setAttribute('data-bs-toggle', 'modal')
-                                day.setAttribute('data-bs-target', '#largeModal')
-                                day.setAttribute('data-whatever', `${i - first_day.getDay() + 1}-${month+1}-${year}`)
-                                day.innerHTML = i - first_day.getDay() + 1
-                                day.innerHTML += `<span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>`
-                                if (i - first_day.getDay() + 1 === currDate.getDate() && year === currDate.getFullYear() && month === currDate.getMonth()) {
-                                    day.classList.add('curr-date')
-                                }
-                            }
-                            calendar_days.appendChild(day)
-                        }
-                    }
-
-                    let month_list = calendar.querySelector('.month-list');
-                    /* Delete the last 12 entries in month_names */
-                    month_names.forEach((e, index) => {  
-                    let month = document.createElement('div')
-                        month.innerHTML = `<div data-month="${index}">${e}</div>`
-                        month.querySelector('div').onclick = () => {
-                            month_list.classList.remove('show')
-                            curr_month.value = index
-                            generateCalendar(index, curr_year.value)
-                        }
-                        month_list.appendChild(month)
-                    })
-
-                    let month_picker = calendar.querySelector('#month-picker')
-
-                    month_picker.onclick = () => {
-                        month_list.classList.add('show')
-                    }
-
-                    let currDate = new Date()
-
-                    let curr_month = {value: currDate.getMonth()}
-                    let curr_year = {value: currDate.getFullYear()}
-
-                    generateCalendar(curr_month.value, curr_year.value)
-
-                    document.querySelector('#prev-year').onclick = () => {
-                        --curr_year.value
-                        generateCalendar(curr_month.value, curr_year.value)
-                    }
-
-                    document.querySelector('#next-year').onclick = () => {
-                        ++curr_year.value
-                        generateCalendar(curr_month.value, curr_year.value)
-                    }
-                    }
-                </script>
-                <script>
-                    // Get the modal element
-                    const modal = document.getElementById('largeModal');
-
-                    // Get the modal title and body elements
-                    const modalTitle = modal.querySelector('.modal-title');
-                    const modalBody = modal.querySelector('.modal-body');
-
-                    // Get all the buttons that toggle the modal
-
-                    // Add click event listener to all calendar day hover elements
-                    const calendarDayHovers = document.querySelectorAll(".calendar-day-hover");
-                    calendarDayHovers.forEach((day) => {
-                    day.addEventListener("click", () => {
-                        const selectedDates = [];
-                        const date = day.getAttribute("data-whatever");
-
-                        // Add the selected date to the array of selected dates
-                        selectedDates.push(date);
-
-                        // Clear the modal body
-                        modalBody.innerHTML = "";
-                        // reemplazar este for cochino con un php que traiga la informacion correcta segun la fecha que viene desde data-whatever
-                        selectedDates.forEach((date) => {
-                        const h1 = document.createElement("h5");
-                        h1.textContent = "Reservas para la fecha: "+date;
-                        modalBody.appendChild(h1);
-                        const table = document.createElement("table");
-                        table.classList.add("table");
-                        table.classList.add("table-striped");
-                        table.classList.add("table-bordered");
-                        table.classList.add("table-hover");
-                        table.classList.add("table-sm");
-                        table.classList.add("table-responsive");
-                        
-                        const thead = document.createElement("thead");
-                        const tr = document.createElement("tr");
-                        const th = document.createElement("th");
-                        th.setAttribute("scope", "col");
-                        th.textContent = "Fecha Ida";
-                        tr.appendChild(th);
-                        const th2 = document.createElement("th");
-                        th2.setAttribute("scope", "col");
-                        th2.textContent = "Cliente";
-                        tr.appendChild(th2);
-                        const th3 = document.createElement("th");
-                        th3.setAttribute("scope", "col");
-                        th3.textContent = "Precio";
-                        tr.appendChild(th3);
-                        const th4 = document.createElement("th");
-                        th4.setAttribute("scope", "col");
-                        th4.textContent = "Paquete";
-                        tr.appendChild(th4);
-                        const th5 = document.createElement("th");
-                        th5.setAttribute("scope", "col");
-                        th5.textContent = "Precio";
-                        const th6 = document.createElement("th");
-                        th6.setAttribute("scope", "col");
-                        th6.textContent = "Estado";
-                        tr.appendChild(th6);
-                        tr.appendChild(th5);
-                        thead.appendChild(tr);
-                        table.appendChild(thead);
-                        //Juan Pérez	Ciudad de México	Cancún	Todo incluido	Paquete 1	04/01/2023	04/05/2023	8000	Activa
-                        const tbody = document.createElement("tbody");
-                        const tr2 = document.createElement("tr");
-                        const td = document.createElement("td");
-                        td.textContent = "04/01/2023";
-                        tr2.appendChild(td);
-                        const td2 = document.createElement("td");
-                        td2.textContent = "Juan Pérez";
-                        tr2.appendChild(td2);
-                        const td3 = document.createElement("td");
-                        td3.textContent = "8000";
-                        tr2.appendChild(td3);
-                        const td4 = document.createElement("td");
-                        td4.textContent = "Paquete 1";
-                        tr2.appendChild(td4);
-                        const td5 = document.createElement("td");
-                        td5.textContent = "8000";
-                        tr2.appendChild(td5);
-                        const td6 = document.createElement("td");
-                        const span = document.createElement("span");
-                        //badge bg-label-primary me-1
-                        span.classList.add("badge");
-                        span.classList.add("bg-label-primary");
-                        span.classList.add("me-1");
-                        span.textContent = "Activa";
-                        td6.appendChild(span);
-                        tr2.appendChild(td6);
-                        tbody.appendChild(tr2);
-                        table.appendChild(tbody);
-                        modalBody.appendChild(table);
-                        });
-                    });
-                    });
-                </script>
+              </div>
+            </div>
+            <!-- Content -->
+            <div class="card" style="margin: 2rem">
+                <div style="display: flex; justify-content: space-between;">
+                    <h5 class="card-header">Paquetes</h5>
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                      <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createPaqueteModal" style="margin: 2rem;  display: flex; justify-content: center; font-weight: 500; font-size: large;">
+                        Crear +
+                        </button>
+                    </div>
+                  </div>
+              <div class="table-responsive text-nowrap">
+                <table id="tabla-reservas" class="table">
+                  <thead>
+                    <tr>
+                      <th>Id Paquete</th>
+                      <th>Nombre</th>
+                      <th>Cantidad Minima de personas</th>
+                      <th>Cantidad Maxima de personas</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id='tabla-contenido-paquetes' class="table-border-bottom-0">
+                    <tr>
+                      <td>1</td>
+                      <td>Paquete 1</td>
+                      <td>5</td>
+                      <td>10</td>
+                      <td>
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarPaquetesModal">Editar</button>
+                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarPaquetesModal">Eliminar</button>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
 
             <div class="content-backdrop fade"></div>
@@ -532,7 +433,7 @@
     <script src="../assets/js/dashboards-analytics.js"></script>
 
     <!-- Helper for php -->
-    <script src="../js/index.js"></script>
+    <script src="../js/index.js"></script>  
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
