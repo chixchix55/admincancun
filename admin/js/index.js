@@ -29,7 +29,7 @@ if (guardarCambiosBtn != null){
 
 // todo esto era para que se visualizaran las reservas en la tabla
 // vendra desde el php
-const reservas = [
+/*const reservas = [
   [1, "Juan Pérez", "Ciudad de México", "Cancún", "Todo incluido", "Paquete 1", "04/01/2023", "04/05/2023", 8000, "",""],
   [2, "María Gutiérrez", "Puerto Vallarta", "Los Cabos", "Sólo vuelo", "Paquete 2", "04/02/2023", "04/04/2023", 5000, "",""],
   [3, "Luis Hernández", "Mazatlán", "Cancún", "Sólo vuelo", "Paquete 3", "04/05/2023", "04/08/2023", 6000, "",""],
@@ -85,4 +85,4 @@ if (reservasBody != null) {
   });
 }
 // hasta aqui
-// });
+// });*/

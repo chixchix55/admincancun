@@ -45,10 +45,7 @@
                         </div>
                         <div class="col mb-3">
                           <label for="cliente" class="form-label">Cliente</label>
-                          <select id="cliente" class="form-select">
-                            <option selected>John Doe</option>
-                            <!-- Add other options as needed -->
-                          </select>
+                          <input type="text" id="cliente" class="form-control" readonly placeholder="John Doe" />
                         </div>
                     </div>
                       <div class="row g-2">
@@ -170,9 +167,45 @@
                       <td><?= $row['fecha_ida'] ?></td>
                       <td><?= $row['fecha_regreso'] ?></td>
                       <td><?= $row['precio'] ?></td>
-                      <td><span class="badge bg-label-primary me-1"><?php if (($row['estatus']) == 1){ echo "Activa";} else{ echo "Cancelada";} ?></span></td>
+                      <?php
+                          $estatus = $row['estatus'];
+                          $label_class = '';
+                          $label_text = '';
+
+                          if ($estatus == 1) {
+                              $label_class = 'bg-label-primary';
+                              $label_text = 'Activa';
+                          } elseif ($estatus == 2) {
+                              $label_class = 'bg-label-warning';
+                              $label_text = 'Pendiente';
+                          } elseif ($estatus == 3) {
+                              $label_class = 'bg-label-success';
+                              $label_text = 'Completada';
+                          } elseif ($estatus == 4) {
+                              $label_class = 'bg-label-info';
+                              $label_text = 'Cancelada';
+                          }
+                      ?>
+
+                      <td><span class="badge <?php echo $label_class; ?> me-1"><?php echo $label_text; ?></span></td>
+                      <?php 
+                          $data = array(
+                            "id" => $row['id_reserva'],
+                            "nombre" => $row['nombre_cliente'],
+                            "n1" => $row['n1'],
+                            "n2" => $row['n2'],
+                            "nombretipo" => $row['nombre_tipo'],
+                            "nombrepaquete" => $row['nombre_paquete'],
+                            "fechaida" => $row['fecha_ida'],
+                            "fecharegreso" => $row['fecha_regreso'],
+                            "precio" => $row['precio'],
+                          );
+                        
+                          // Encode the array as JSON
+                          $jsonString = json_encode($data);                          
+                      ?>
                       <td>
-                        <button type="button" class="btn btn-primary btn-sm edit" data-bs-toggle="modal" data-bs-target="#largeModal">Editar</button>
+                        <button type="button" class="btn btn-primary btn-sm edit" data-bs-toggle="modal" data-bs-target="#largeModal" data= '<?php echo $jsonString;?>'>Editar</button>
                         <button type="button"  class="btn btn-danger btn-sm eliminar-reserva" data-bs-toggle="modal" data-bs-target="#modalCenter" >Eliminar</button>
                         <form method="POST" >
                           <input style="display: none" name="txtID" id="txtID" value="<?php echo $row['id_reserva']; ?>" />

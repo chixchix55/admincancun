@@ -17,9 +17,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	
 	// Conectar a la base de datos
 	$host = "localhost";
-	$db_usuario = "c1532136_cancun";
-	$db_contrasena = "Aczonah123456";
-	$db_nombre = "c1532136_cancun";
+	$db_usuario = "root";
+	$db_contrasena = "";
+	$db_nombre = "shuttlet_cancuncabtransportation";
 	
 	$conn = mysqli_connect($host, $db_usuario, $db_contrasena, $db_nombre);
 	
