@@ -202,7 +202,7 @@
                           );
                         
                           // Encode the array as JSON
-                          $jsonString = json_encode($data);                          
+                          $jsonString = json_encode($data, JSON_UNESCAPED_UNICODE);                         
                       ?>
                       <td>
                         <button type="button" class="btn btn-primary btn-sm edit" data-bs-toggle="modal" data-bs-target="#largeModal" data= '<?php echo $jsonString;?>'>Editar</button>
