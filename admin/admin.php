@@ -1,4 +1,6 @@
-<?php include 'templates/header.php' ?>
+<?php 
+$menu = 1;
+include 'templates/header.php' ?>
           <!-- Content wrapper -->
           <div class="content-wrapper">
             

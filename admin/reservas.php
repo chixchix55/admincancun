@@ -1,4 +1,6 @@
-<?php include 'templates/header.php' ?>
+<?php 
+$menu = 2;
+include 'templates/header.php' ?>
           <!-- Content wrapper -->
           <div class="content-wrapper">
        <?php   
@@ -6,6 +8,7 @@
               $db_usuario = "root";
               $db_contrasena = "";
               $db_nombre = "shuttlet_cancuncabtransportation";
+              $menu = 2;
 
               $conn = mysqli_connect($host, $db_usuario, $db_contrasena, $db_nombre);
 
