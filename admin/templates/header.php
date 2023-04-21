@@ -59,7 +59,7 @@
         <!-- Menu -->
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-          <div class="app-brand demo">
+        <div class="app-brand demo">
             <a href="admin.html">
               <img alt= "logo" style="
               width: 220px;" src="assets/img/cancun-cab-transportation-logo.png"/>
@@ -73,8 +73,10 @@
           <div class="menu-inner-shadow"></div>
 
           <ul class="menu-inner py-1">
+
+          <?php $url = "http://".$_SERVER['HTTP_HOST']."/admincancun" ?>
             <!-- Dashboard -->
-            <li class="menu-item active">
+            <li class="menu-item ">
               <a href="admin.html" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Inicio</div>
@@ -82,7 +84,7 @@
             </li>
 
             <!-- Reservas -->
-            <li class="menu-item">
+            <li class="menu-item active">
               <a href="reservas.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-bookmarks"></i>
                 <div data-i18n="Analytics">Reservas</div>
@@ -131,7 +133,7 @@
 
             <!-- Tipos -->
             <li class="menu-item">
-              <a href="../admin/html/pages-misc-under-maintenance.html" class="menu-link">
+              <a href="../admin/html/tpos.html" class="menu-link">
                 <i class='menu-icon tf-icons bx bx-right-arrow-alt'></i>
                 <div data-i18n="Analytics">Tipos</div>
               </a>
@@ -188,7 +190,7 @@
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Place this tag where you want the button to render. -->
-
+        
 
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -254,46 +256,3 @@
           </nav>
 
           <!-- / Navbar -->
-
-          <!-- Content wrapper -->
-          <div class="content-wrapper">
-            
-           
-
-            <div class="content-backdrop fade"></div>
-          </div>
-          <!-- Content wrapper -->
-        </div>
-        <!-- / Layout page -->
-      </div>
-
-      <!-- Overlay -->
-      <div class="layout-overlay layout-menu-toggle"></div>
-    </div>
-    <!-- / Layout wrapper -->
-
-
-
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="assets/vendor/libs/popper/popper.js"></script>
-    <script src="assets/vendor/js/bootstrap.js"></script>
-    <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-
-    <script src="assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
-
-    <!-- Vendors JS -->
-    <script src="assets/vendor/libs/apex-charts/apexcharts.js"></script>
-
-    <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
-
-    <!-- Page JS -->
-    <script src="assets/js/dashboards-analytics.js"></script>
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </body>
-</html>
