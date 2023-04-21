@@ -16,9 +16,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$tiempo_bloqueo = 10; // Establecer el tiempo de bloqueo después de superar el límite de intentos
 	
 	// Conectar a la base de datos
-	$host = "localhost";
-	$db_usuario = "root";
-	$db_contrasena = "";
+	$host = "69.49.241.99";
+	$db_usuario = "shuttle_cancuncab";
+	$db_contrasena = "xjB%ICn,KP^!E4=7";
 	$db_nombre = "shuttlet_cancuncabtransportation";
 	
 	$conn = mysqli_connect($host, $db_usuario, $db_contrasena, $db_nombre);
