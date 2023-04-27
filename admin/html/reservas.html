@@ -333,42 +333,28 @@
                         </div>
                         <div class="col mb-3">
                           <label for="cliente" class="form-label">Cliente</label>
-                          <select id="cliente" class="form-select">
-                            <option selected>John Doe</option>
-                            <!-- Add other options as needed -->
-                          </select>
+                          <input type="text" id="cliente" class="form-control" readonly/>
                         </div>
                       </div>
                       <div class="row g-2">
                         <div class="col mb-0">
                           <label for="salida" class="form-label">Salida</label>
-                          <select id="salida" class="form-select">
-                            <option selected>San Salvador</option>
-                            <!-- Add other options as needed -->
-                          </select>
+                          <input type="text" id="salida" class="form-control"/>
                         </div>
                         <div class="col mb-0">
                           <label for="destino" class="form-label">Destino</label>
-                          <select id="destino" class="form-select">
-                            <option selected>Guatemala</option>
-                            <!-- Add other options as needed -->
-                          </select>
+                          <input type="text" id="destino" class="form-control"/>
                         </div>
                       </div>
                       <div class="row g-2">
                         <div class="col mb-0">
                           <label for="tipo" class="form-label">Tipo de Viaje</label>
-                          <select id="tipo" class="form-select">
-                            <option selected>Ida y Vuelta</option>
-                            <!-- Add other options as needed -->
-                          </select>
+                          <input type="text" id="tipo" class="form-control"/>
+                          <div id="tipo-dropdown"></div>
                         </div>
                         <div class="col mb-0">
                           <label for="paquete" class="form-label">Paquete</label>
-                          <select id="paquete" class="form-select">
-                            <option selected>Paquete 1</option>
-                            <!-- Add other options as needed -->
-                          </select>
+                          <input type="text" id="paquete" class="form-control"/>
                         </div>
                       </div>
                       <div class="row g-2">
@@ -384,14 +370,11 @@
                       <div class="row">
                         <div class="col mb-0">
                           <label for="precio" class="form-label">Precio</label>
-                          <input type="text" id="precio" class="form-control" readonly placeholder="$100" />
+                          <input type="text" id="precio" class="form-control" readonly />
                         </div>
                         <div class="col mb-0">
                           <label for="estado" class="form-label">Estado</label>
-                          <select id="estado" class="form-select">
-                            <option selected>Placeholder</option>
-                            <!-- Add other options as needed -->
-                          </select>
+                          <input type="text" id="estado" class="form-control" />
                         </div>
                       </div>
                     </form>
@@ -400,7 +383,7 @@
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                       Cancelar
                     </button>
-                    <button id="guardar-cambios" type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar Cambios</button>
+                    <button id="guardar-cambios" type="button" class="btn btn-primary" >Guardar Cambios</button>
                   </div>
                 </div>
               </div>
@@ -424,9 +407,92 @@
                 </div>
               </div>
             </div>
+            <!-- Modal Crear Reservas -->
+            <div class="modal fade" id="createReservaModal" tabindex="-1" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel3">Crear Reserva</h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="row">
+                        <div class="col mb-3">
+                          <label for="numReserva" class="form-label">Numero Reserva</label>
+                          <input type="text" id="numReserva_create" class="form-control" readonly />
+                        </div>
+                        <div class="col mb-3">
+                          <label for="cliente" class="form-label">Cliente</label>
+                          <input type="text" id="cliente_create" class="form-control"/>
+                        </div>
+                      </div>
+                      <div class="row g-2">
+                        <div class="col mb-0">
+                          <label for="salida" class="form-label">Salida</label>
+                          <input type="text" id="salida_create" class="form-control"/>
+                        </div>
+                        <div class="col mb-0">
+                          <label for="destino" class="form-label">Destino</label>
+                          <input type="text" id="destino_create" class="form-control"/>
+                        </div>
+                      </div>
+                      <div class="row g-2">
+                        <div class="col mb-0">
+                          <label for="tipo" class="form-label">Tipo de Viaje</label>
+                          <input type="text" id="tipo_create" class="form-control"/>
+                        </div>
+                        <div class="col mb-0">
+                          <label for="paquete" class="form-label">Paquete</label>
+                          <input type="text" id="paquete_create" class="form-control"/>
+                        </div>
+                      </div>
+                      <div class="row g-2">
+                        <div class="col mb-0">
+                          <label for="fechaIda" class="form-label">Fecha Ida</label>
+                          <input type="date" id="fechaIda_create" class="form-control" placeholder="2021-05-05"/>
+                        </div>
+                        <div class="col mb-0">
+                          <label for="fechaRegreso" class="form-label">Fecha Regreso</label>
+                          <input type="date" id="fechaRegreso_create" class="form-control" placeholder="2021-05-05"/>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col mb-0">
+                          <label for="precio" class="form-label">Precio</label>
+                          <input type="text" id="precio_create" class="form-control" readonly />
+                        </div>
+                        <div class="col mb-0">
+                          <label for="estado" class="form-label">Estado</label>
+                          <input type="text" id="estado_create" class="form-control" />
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                      Cancelar
+                    </button>
+                    <button id="crear-reserva" type="button" class="btn btn-primary" data-bs-dismiss="modal">Crear Reserva</button>
+                  </div>
+                </div>
+              </div>
+            </div>
             <!-- Content -->
             <div class="card m-5">
-              <h5 class="card-header">Reservas</h5>
+              <div style="display: flex; justify-content: space-between;">
+                <h5 class="card-header">Reservas</h5>
+                <div style="display: flex; justify-content: center; align-items: center;">
+                  <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createReservaModal" style="margin: 2rem;  display: flex; justify-content: center; font-weight: 500; font-size: large;">
+                    Crear +
+                    </button>
+                </div>
+              </div>
               <div class="table-responsive text-nowrap">
                 <table id="tabla-reservas" class="table">
                   <thead>
@@ -457,7 +523,7 @@
                       <td>$100</td>
                       <td><span class="badge bg-label-primary me-1">Activa</span></td>
                       <td>
-                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#largeModal">
+                        <button type="button" id="modificar-reserva" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#largeModal" data-whatever='{"id":"1","nombre":"Jesús","n1":"Aeropuerto Internacional de Ca","n2":"Akumal","nombretipo":"IDA","nombrepaquete":"Minivan","fechaida":"2023-05-02","fecharegreso":"2023-05-03","precio":"550"}'>
                         Editar
                         </button>
                         <button type="button" class="btn btn-danger btn-sm eliminar-reserva" data-bs-toggle="modal" data-bs-target="#modalCenter">Eliminar</button>
@@ -467,7 +533,6 @@
                 </table>
               </div>
             </div>
-
             <div class="content-backdrop fade"></div>
           </div>
           <!-- Content wrapper -->
